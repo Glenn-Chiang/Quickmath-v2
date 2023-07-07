@@ -11,17 +11,6 @@
     position: relative;
 }
 
-.settings {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-}
-
-.difficulty, .timeLimit {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
 
 .info {
     padding: 20px;

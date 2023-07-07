@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from "react";
 import Banner from "../../components/banner";
-import Settings from "./settings";
+import Settings from "../../components/settings/settings";
 
 import styles from './drill.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,7 +14,7 @@ export default function Drill() {
   const [drillState, setDrillState] = useState('predrill'); // predrill, active, postdrill
   
   const [difficulty, setDifficulty] = useState('medium');
-  const [timeLimit, setTimeLimit] = useState(60);
+  const [timeLimit, setTimeLimit] = useState('60');
   
   const [problem, setProblem] = useState(generateProblem(difficulty));
   const [score, setScore] = useState(0);

@@ -12,6 +12,7 @@ import { action as signUpAction } from './routes/signUp/signUpAction'
 import { action as signInAction } from './routes/signIn/action'
 import { action as signOutAction } from './routes/signOut/action'
 import SignOut from './routes/signOut/signOut'
+import { loader as statsLoader } from './routes/stats/loader'
 
 const router = createBrowserRouter([
   {
@@ -23,8 +24,9 @@ const router = createBrowserRouter([
         element: <Drill/>
       },
       {
-        path: '/stats',
-        element: <Stats/>
+        path: '/stats/:userId',
+        element: <Stats/>,
+        loader: statsLoader
       },
       {
         path: '/leaderboard',

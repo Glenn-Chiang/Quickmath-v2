@@ -5,9 +5,12 @@ export default async function saveScore(user, difficulty, timeLimit, score) {
     try {
         const userDocRef = doc(db, 'users', user.uid);
         const userDoc = await getDoc(userDocRef);
-        const currentScores = userDoc.data().scores[difficulty][timeLimit];
+        const currentScores = userDoc.data().scores;
 
-        await updateDoc(userDocRef, {['scores.' + difficulty + '.' + timeLimit]: [...currentScores, score]});
+        const date = new Date();
+        const newScoreEntry = { score, difficulty, timeLimit, date};
+
+        await updateDoc(userDocRef, {scores: [...currentScores, newScoreEntry]});
         console.log('Score saved');
         alert('Score saved!');
     } catch (error) {

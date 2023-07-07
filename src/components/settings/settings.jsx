@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import titlecase from "../../utility/titlecase";
-import styles from './drill.module.css'
+import styles from './settings.module.css'
 
 
 export default function Settings({ drillActive, currentDifficulty, setDifficulty, currentTimeLimit, setTimeLimit }) {

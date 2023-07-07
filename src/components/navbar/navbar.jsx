@@ -13,7 +13,7 @@ export default function Navbar() {
         <FontAwesomeIcon icon={faPlayCircle}/>
         Play
       </NavLink>
-      <NavLink to={'/stats'} className={({isActive}) => isActive ? styles.active : ''}>
+      <NavLink to={user && `/stats/${user.uid}`} className={({isActive}) => isActive ? styles.active : ''}>
         <FontAwesomeIcon icon={faBarsProgress}/>
         Stats
       </NavLink>
