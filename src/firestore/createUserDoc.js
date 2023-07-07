@@ -1,7 +1,7 @@
-import { addDoc, collection } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
-export default async function createUserDoc(username) {
+export default async function createUserDoc(userId, username) {
     const scores = {
         easy: {
             30: [],
@@ -26,7 +26,7 @@ export default async function createUserDoc(username) {
     const userData = { username, scores }
 
     try {
-        await addDoc(collection(db, 'users'), userData);
+        await setDoc(doc(db, 'users', userId), userData);
         console.log('Created user document');
     } catch (error) {
         console.log('Error creating user document: ', error);

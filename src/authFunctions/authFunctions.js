@@ -4,8 +4,9 @@ import createUserDoc from "../firestore/createUserDoc";
 
 const signUp = async (username, email, password) => {
     try {
-        await createUserWithEmailAndPassword(auth, email, password);
-        await createUserDoc(username);
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const userId = userCredential.user.uid;
+        await createUserDoc(userId, username);
         console.log('Signed up');
     } catch (error) {
         console.log('Error signing up:', error);

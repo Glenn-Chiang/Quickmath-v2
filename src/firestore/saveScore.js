@@ -1,3 +1,16 @@
-export default async function saveScore(user, difficulty, timeLimit, score) {
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
+export default async function saveScore(user, difficulty, timeLimit, score) {
+    try {
+        const userDocRef = doc(db, 'users', user.uid);
+        const userDoc = await getDoc(userDocRef);
+        const currentScores = userDoc.data().scores[difficulty][timeLimit];
+
+        await updateDoc(userDocRef, {['scores.' + difficulty + '.' + timeLimit]: [...currentScores, score]});
+        console.log('Score saved');
+        alert('Score saved!');
+    } catch (error) {
+        console.log('Error saving score: ', error);
+    }
 }

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import titlecase from "../../../utility/titlecase";
 import styles from './result.module.css'
 import { AuthContext } from "../../../authContext";
+import saveScore from "../../../firestore/saveScore";
 
 export default function Result({ score, difficulty, timeLimit, resetDrill }) {
   const user = useContext(AuthContext);
