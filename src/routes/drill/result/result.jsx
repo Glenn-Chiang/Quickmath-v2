@@ -1,9 +1,14 @@
+/* eslint-disable react/prop-types */
+import { useContext } from "react";
 import titlecase from "../../../utility/titlecase";
 import styles from './result.module.css'
+import { AuthContext } from "../../../authContext";
 
 export default function Result({ score, difficulty, timeLimit, resetDrill }) {
-  const handleSave = () => {
-    // Save score
+  const user = useContext(AuthContext);
+
+  const handleSave = async () => {
+    await saveScore(user, difficulty, timeLimit, score);
     resetDrill();
   }
   
@@ -19,7 +24,12 @@ export default function Result({ score, difficulty, timeLimit, resetDrill }) {
         <p><span>Time Limit</span> <span>{timeLimit}</span></p>
       </div>
       <div className={styles.buttons}>
+      {
+        user ? 
         <button className={styles.save} onClick={handleSave}>Save score</button>
+        : 
+        <p>Sign in to save your scores</p>
+      }
         <button className={styles.retry} onClick={handleRetry}>Retry</button>
       </div>
     </div>

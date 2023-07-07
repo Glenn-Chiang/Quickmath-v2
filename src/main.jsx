@@ -8,7 +8,10 @@ import SignUp from './routes/signUp/signUp'
 import Stats from './routes/stats/stats'
 import Leaderboard from './routes/leaderboard/leaderboard'
 import SignIn from './routes/signIn/signIn'
-
+import { action as signUpAction } from './routes/signUp/signUpAction'
+import { action as signInAction } from './routes/signIn/action'
+import { action as signOutAction } from './routes/signOut/action'
+import SignOut from './routes/signOut/signOut'
 
 const router = createBrowserRouter([
   {
@@ -29,11 +32,18 @@ const router = createBrowserRouter([
       },
       {
         path: '/signup',
-        element: <SignUp/>
+        element: <SignUp/>,
+        action: signUpAction
       },
       {
         path: '/signIn',
-        element: <SignIn/>
+        element: <SignIn/>,
+        action: signInAction
+      },
+      {
+        path: '/signOut',
+        element: <SignOut/>,
+        action: signOutAction
       }
     ]
   },

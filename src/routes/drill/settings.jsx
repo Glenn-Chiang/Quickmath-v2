@@ -7,7 +7,7 @@ export default function Settings({ drillActive, currentDifficulty, setDifficulty
     const difficulties = ['easy', 'medium', 'hard'];
     const difficultyOptions = difficulties.map((difficulty, index) => {
       return (
-        <option key={index} value={difficulty} selected={difficulty === currentDifficulty}>
+        <option key={index} value={difficulty}>
           {titlecase(difficulty)}
         </option>
       )
@@ -16,7 +16,7 @@ export default function Settings({ drillActive, currentDifficulty, setDifficulty
     const timeLimits = [30, 60, 90, 120];
     const timeLimitOptions = timeLimits.map((time, index) => {
       return (
-        <option key={index} value={time} selected={time === currentTimeLimit}>
+        <option key={index} value={time}>
           {time}
         </option>
       )
@@ -26,14 +26,14 @@ export default function Settings({ drillActive, currentDifficulty, setDifficulty
       <form className={styles.settings}>
         <div className={styles.difficulty}>
           <label htmlFor="difficulty">Difficulty</label>
-          <select onChange={event => setDifficulty(event.target.value)} id="difficulty" disabled={drillActive}> 
+          <select defaultValue={currentDifficulty} onChange={event => setDifficulty(event.target.value)} id="difficulty" disabled={drillActive}> 
             {difficultyOptions}
           </select>
         </div>
   
         <div className={styles.timeLimit}>
           <label htmlFor="timeLimit">Time Limit</label>
-          <select onChange={event => setTimeLimit(event.target.value)} id="timeLimit" disabled={drillActive}>
+          <select defaultValue={currentTimeLimit} onChange={event => setTimeLimit(event.target.value)} id="timeLimit" disabled={drillActive}>
             {timeLimitOptions}
           </select>
         </div>
