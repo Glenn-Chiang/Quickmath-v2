@@ -1,0 +1,41 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+}
+
+.score {
+    font-size: xx-large;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.save {
+    background-color: crimson;
+}
+
+.save:hover {
+    background-color: lightcoral;
+}
+
+.retry {
+    background-color: deepskyblue;
+}
+
+.retry:hover {
+    background-color: skyblue;
+}
+
+.settings p {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.settings p span:last-child, .score span:last-child {
+    color: lightseagreen
+}

@@ -1,0 +1,32 @@
+@import '../../index.css';
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    z-index: 1;
+    background-color: var(--background);
+}
+
+.navbar a {
+    flex: 1;
+    border-radius: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar a:hover {
+    color: mediumturquoise;
+}
+
+.active {
+    border-bottom: 2px solid white;
+}
+
+.active:hover {
+    border-bottom: 2px solid mediumturquoise;
+}

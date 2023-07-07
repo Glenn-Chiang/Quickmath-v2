@@ -1,0 +1,57 @@
+.main h3 {
+    color: deepskyblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.main {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+
+.container {
+    display: grid;
+    border-radius: 40px;
+    padding: 20px;
+    border: 2px solid deepskyblue;
+    background-color: var(--dark);
+}
+
+.summary .container > div {
+    border-radius: 40px;
+    padding: 20px;
+}
+
+.highScore, .averageScore {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.highScore {
+    font-size: xx-large;
+}
+
+.highScore :last-child {
+    --diameter: 80px;
+    width: var(--diameter);
+    height: var(--diameter);
+    border-radius: calc((var(--diameter)) / 2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: deepskyblue;
+}
+
+.averageScore :last-child {
+    color: deepskyblue;
+}
+

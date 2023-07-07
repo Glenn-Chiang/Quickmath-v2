@@ -1,0 +1,61 @@
+@import '../../index.css';
+
+.window {
+    margin: 20px;
+    border-radius: 10px;
+    width: 600px;
+    min-height: 180px;
+    background-color: rgb(0,40,80);
+    color: white;
+    padding: 20px;
+    position: relative;
+}
+
+.settings {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.difficulty, .timeLimit {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.info {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.startBtn, .quitBtn {
+    background-color: crimson;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: auto;
+}
+
+
+.startBtn:hover, .quitBtn:hover {
+    background-color: lightcoral
+}
+
+.time, .score {
+    display: flex;
+    gap: 10px;
+}
+
+.timeLeftRed {
+    color: red;
+}
+
+.answer {
+    width: 60px;
+    margin-left: 10px;
+}
+
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
