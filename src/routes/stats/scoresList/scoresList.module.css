@@ -1,0 +1,52 @@
+.resultList {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.resultList li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.resultList li p {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.resultList li > :first-child {
+    font-size: 2rem;
+}
+
+
+
+.resultList li :last-child :nth-of-type(1) span {
+    border-radius: 12px;
+    padding: 8px;
+}
+
+.easy :last-child :nth-of-type(1) span {
+    background-color: mediumspringgreen
+}
+
+.easy > :first-child span {
+    color: mediumspringgreen;
+}
+
+.medium :last-child :nth-of-type(1) span {
+    background-color: mediumturquoise
+}
+
+.medium > :first-child span {
+    color: mediumturquoise;
+}
+
+.hard :last-child :nth-of-type(1) span {
+    background-color: crimson;
+}
+
+.hard > :first-child span {
+    color: crimson;
+}

@@ -29,6 +29,10 @@ const router = createBrowserRouter([
         loader: statsLoader
       },
       {
+        path: '/stats',
+        element: <Stats/>
+      },
+      {
         path: '/leaderboard',
         element: <Leaderboard/>
       },
