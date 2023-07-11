@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { faBarsProgress, faHistory, faMedal } from "@fortawesome/free-solid-svg-icons";
+import { faBarsProgress, faChevronLeft, faChevronRight, faHistory, faMedal } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from './stats.module.css'
 import Settings from "../../components/settings/settings";
@@ -13,17 +13,31 @@ export default function Stats() {
   
   const user = useContext(AuthContext);
 
+  
+  const [startIndex, setStartIndex] = useState(0);
+  const resultsPerPage = 10;
+
+  const handlePrev = () => {
+    if (startIndex === 0) {
+      return;
+    }
+    setStartIndex(startIndex - resultsPerPage);
+  }
+
+  const handleNext = () => {
+    if (startIndex + resultsPerPage > results.length - 1) {
+      return;
+    }
+    setStartIndex(startIndex + resultsPerPage);
+  }
+
+
   if (!user) {
     return <p>Sign in to view your stats</p>
   }
 
   return (
     <>
-      <h2>
-      <FontAwesomeIcon icon={faBarsProgress} />
-        Stats
-      </h2>
-
       <div className={styles.main}> 
         <section className={styles.summary}>
           <div className={styles.container}>
@@ -36,8 +50,16 @@ export default function Stats() {
             <FontAwesomeIcon icon={faHistory}/>
             History
           </h3>
+          <div className={styles.buttons}>
+            <button onClick={handlePrev}>
+              <FontAwesomeIcon icon={faChevronLeft}/>
+            </button>
+            <button onClick={handleNext}>
+              <FontAwesomeIcon icon={faChevronRight}/>
+            </button>
+          </div>
           <div className={styles.container}>
-            <ScoresList results={results} />
+            <ScoresList results={results} startIndex={startIndex} />
           </div>
         </section>
       </div>

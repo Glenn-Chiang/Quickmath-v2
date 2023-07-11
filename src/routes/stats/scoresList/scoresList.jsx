@@ -10,11 +10,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import titlecase from "../../../utility/titlecase";
 
-export default function ScoresList({ results }) {
+export default function ScoresList({ results, startIndex }) {
+
   const recentResults =
     results.length > 10
-      ? results.slice(-10).reverse()
-      : results.slice().reverse();
+      ? [...results].reverse().slice(startIndex, startIndex + 10)
+      : [...results].reverse();
 
   // const topResults = selectedResults.length > 5 ? selectedResults.sort((a,b) => b.score - a.score).slice(0,5) : selectedResults.sort((a,b) => b.score - a.score);
 
