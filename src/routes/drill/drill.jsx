@@ -124,7 +124,7 @@ function Problem({ problem, handleSubmit }) {
   }, [])
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.problem} onSubmit={handleSubmit}>
       <label htmlFor="answer">{problemStatement}</label>
       <input type="number" id="answer" name="answer" className={styles.answer} ref={inputRef}/>
     </form>

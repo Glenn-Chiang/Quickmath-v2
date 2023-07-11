@@ -25,14 +25,14 @@ export default function Result({ score, difficulty, timeLimit, resetDrill }) {
         <p><span>Time Limit</span> <span>{timeLimit}</span></p>
       </div>
       <div className={styles.buttons}>
-      {
-        user ? 
-        <button className={styles.save} onClick={handleSave}>Save score</button>
-        : 
-        <p>Sign in to save your scores</p>
-      }
+        <button className={styles.save} onClick={handleSave} disabled={!user}>
+          Save score
+        </button> 
         <button className={styles.retry} onClick={handleRetry}>Retry</button>
       </div>
+      {
+        !user && <p>Sign in to save your scores</p>
+      }
     </div>
   )
 }

@@ -28,7 +28,7 @@
 }
 
 .easy :last-child :nth-of-type(1) span {
-    background-color: mediumspringgreen
+    background-color: mediumspringgreen;
 }
 
 .easy > :first-child span {
@@ -36,15 +36,21 @@
 }
 
 .medium :last-child :nth-of-type(1) span {
-    background-color: mediumturquoise
+    background-color: skyblue;
+    color: dodgerblue;
+    border: 1px solid dodgerblue;
+
 }
 
 .medium > :first-child span {
-    color: mediumturquoise;
+    color: dodgerblue;
 }
 
 .hard :last-child :nth-of-type(1) span {
-    background-color: crimson;
+    background-color: lightpink;
+    color: crimson;
+    border: 1px solid crimson;
+
 }
 
 .hard > :first-child span {

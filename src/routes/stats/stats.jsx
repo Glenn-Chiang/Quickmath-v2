@@ -46,10 +46,10 @@ export default function Stats() {
         </section>
 
         <section className={styles.recent}>
-          <h3>
+          <h2>
             <FontAwesomeIcon icon={faHistory}/>
             History
-          </h3>
+          </h2>
           <div className={styles.buttons}>
             <button onClick={handlePrev}>
               <FontAwesomeIcon icon={faChevronLeft}/>

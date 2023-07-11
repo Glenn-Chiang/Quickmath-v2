@@ -40,6 +40,11 @@
     color: red;
 }
 
+
+.problem {
+    font-size: 2rem;
+}
+
 .answer {
     width: 60px;
     margin-left: 10px;
