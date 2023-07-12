@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import titlecase from "../../utility/titlecase";
 import styles from './settings.module.css'
+import { faBarsProgress, faClock } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function Settings({ drillActive, currentDifficulty, setDifficulty, currentTimeLimit, setTimeLimit }) {
@@ -25,14 +27,19 @@ export default function Settings({ drillActive, currentDifficulty, setDifficulty
     return (
       <form className={styles.settings}>
         <div className={styles.difficulty}>
-          <label htmlFor="difficulty">Difficulty</label>
+          <label htmlFor="difficulty">
+            <FontAwesomeIcon icon={faBarsProgress}/>
+            
+          </label>
           <select defaultValue={currentDifficulty} onChange={event => setDifficulty(event.target.value)} id="difficulty" disabled={drillActive}> 
             {difficultyOptions}
           </select>
         </div>
   
         <div className={styles.timeLimit}>
-          <label htmlFor="timeLimit">Time Limit</label>
+          <label htmlFor="timeLimit">
+            <FontAwesomeIcon icon={faClock}/>
+          </label>
           <select defaultValue={currentTimeLimit} onChange={event => setTimeLimit(event.target.value)} id="timeLimit" disabled={drillActive}>
             {timeLimitOptions}
           </select>

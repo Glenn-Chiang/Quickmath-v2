@@ -1,0 +1,17 @@
+.buttons {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.buttons button {
+    background-color: deepskyblue;
+    width: 40px;
+    height: 40px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}

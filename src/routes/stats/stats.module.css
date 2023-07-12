@@ -63,15 +63,25 @@
 }
 
 
-.buttons {
-    padding: 20px;
+.topscores ol {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     gap: 10px;
+
 }
 
-.buttons button {
-    background-color: deepskyblue;
-    width: 40px;
-    height: 40px;
+.topscores ol li div {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+}
+
+.topscores ol li div :first-child {
+    grid-column: 2 / 3;
+    font-size: 1.5rem;
+    color: deepskyblue;
+    justify-items: center;
+}
+
+.topscores ol li div :last-child {
+    color: rgb(0,60,100);
 }

@@ -43,7 +43,7 @@
 }
 
 .medium > :first-child span {
-    color: dodgerblue;
+    color: deepskyblue;
 }
 
 .hard :last-child :nth-of-type(1) span {

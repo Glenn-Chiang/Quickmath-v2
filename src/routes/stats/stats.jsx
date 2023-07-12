@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
-import { faBarsProgress, faChevronLeft, faChevronRight, faHistory, faMedal } from "@fortawesome/free-solid-svg-icons";
+import { faBarsProgress, faCalendar, faClock, faGear, faHistory, faMedal, faTrophy } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from './stats.module.css'
 import Settings from "../../components/settings/settings";
 import { useLoaderData } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../authContext";
-import ScoresList from "./scoresList/scoresList";
+import History from "./history/history";
+import formatDate from "../../utility/formatDate";
 
 export default function Stats() {
   const results = useLoaderData();
@@ -14,24 +15,6 @@ export default function Stats() {
   const user = useContext(AuthContext);
 
   
-  const [startIndex, setStartIndex] = useState(0);
-  const resultsPerPage = 10;
-
-  const handlePrev = () => {
-    if (startIndex === 0) {
-      return;
-    }
-    setStartIndex(startIndex - resultsPerPage);
-  }
-
-  const handleNext = () => {
-    if (startIndex + resultsPerPage > results.length - 1) {
-      return;
-    }
-    setStartIndex(startIndex + resultsPerPage);
-  }
-
-
   if (!user) {
     return <p>Sign in to view your stats</p>
   }
@@ -45,22 +28,14 @@ export default function Stats() {
           </div>
         </section>
 
-        <section className={styles.recent}>
-          <h2>
-            <FontAwesomeIcon icon={faHistory}/>
-            History
-          </h2>
-          <div className={styles.buttons}>
-            <button onClick={handlePrev}>
-              <FontAwesomeIcon icon={faChevronLeft}/>
-            </button>
-            <button onClick={handleNext}>
-              <FontAwesomeIcon icon={faChevronRight}/>
-            </button>
-          </div>
+        <section className={styles.topscores}>
           <div className={styles.container}>
-            <ScoresList results={results} startIndex={startIndex} />
+            <TopScores results={results}/>
           </div>
+        </section>
+
+        <section className={styles.recent}>
+          <History results={results}/>
         </section>
       </div>
     </>
@@ -79,7 +54,7 @@ function Summary({results}) {
   return (
     <>
       <div className={styles.highScore}>
-        <FontAwesomeIcon icon={faMedal} />
+        <FontAwesomeIcon icon={faTrophy} />
         HIGH SCORE
         <div>{highScore}</div>
       </div>
@@ -95,4 +70,36 @@ function Summary({results}) {
 }
  
 
+function TopScores({results}) {
+  const [selectedDifficulty, setDifficulty] = useState('medium');
+  const [selectedTimeLimit, setTimeLimit] = useState('60');
 
+  const selectedResults = results.filter(result => result.difficulty === selectedDifficulty && result.timeLimit === selectedTimeLimit);
+  const topResults = selectedResults.length > 5 ? selectedResults.sort((a,b) => b.score - a.score).slice(0,5) : selectedResults.sort((a,b) => b.score - a.score);
+  
+  const topScoresList = topResults.map((result, index) => {
+    return (
+      <li key={index}>
+        <div>
+          <span>{result.score}</span>
+          <span>{formatDate(result.date)}</span>
+        </div>
+      </li>
+    )
+  })
+
+  return (
+    <>
+      <h2>
+        <FontAwesomeIcon icon={faMedal}/>
+        Top Scores
+      </h2>
+      <div>
+      <Settings currentDifficulty={selectedDifficulty} setDifficulty={setDifficulty} currentTimeLimit={selectedTimeLimit} setTimeLimit={setTimeLimit}/>
+      </div>
+      <ol>
+        {topScoresList.length > 0 ? topScoresList : <p>No scores recorded</p>}
+      </ol>
+    </>
+  )
+}
